@@ -94,7 +94,7 @@ input{-webkit-user-select:text;user-select:text}
 <canvas id="mm" width="300" height="214" aria-label="Minimap, tap to enlarge"></canvas>
 <script>
 const $=i=>document.getElementById(i),cv=$('c'),g=cv.getContext('2d'),DPR=Math.min(1.5,devicePixelRatio||1);
-let VW,VH;function rs(){VW=innerWidth;VH=innerHeight;cv.width=VW*DPR;cv.height=VH*DPR;g.setTransform(DPR,0,0,DPR,0,0)}onresize=rs;rs();if(window.visualViewport)visualViewport.addEventListener('resize',rs);
+let VW,VH;function rs(){VW=document.documentElement.clientWidth||innerWidth;VH=innerHeight;cv.width=VW*DPR;cv.height=VH*DPR;g.setTransform(DPR,0,0,DPR,0,0)}addEventListener('resize',rs,{passive:true});rs();['gesturestart','gesturechange','gestureend'].forEach(n=>document.addEventListener(n,e=>e.preventDefault(),{passive:false}));document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
 const WW=1400,WH=1000;let S,E=[],F=[],PJ=[],run=false,mute=false,AC=null,cd=0,pcd=0,jx=0,jy=0,fa=0,sw=0,spin=0,ph=0,mi=0,tab='bag',dots=[];
 for(let i=0;i<160;i++)dots.push([520+Math.random()*860,40+Math.random()*920,1+Math.random()*3]);
 const MG=g;let mG=null;
